@@ -9,7 +9,7 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
 const App: React.FC = () => {
-  // Configuração global para animações de scroll
+  // Configuração global para animações de scroll e carregamento inicial
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -26,7 +26,20 @@ const App: React.FC = () => {
     );
 
     const elements = document.querySelectorAll('.reveal');
-    elements.forEach((el) => observer.observe(el));
+
+    // Anima elementos que já estão visíveis ao carregar (como o Hero)
+    setTimeout(() => {
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isVisible) {
+          el.classList.add('active');
+        }
+
+        observer.observe(el);
+      });
+    }, 100); // Pequeno delay para garantir que o DOM está pronto
 
     return () => observer.disconnect();
   }, []);

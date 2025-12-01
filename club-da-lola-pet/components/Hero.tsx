@@ -26,7 +26,7 @@ export const Hero: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center gap-12">
 
           {/* Text Content */}
-          <div className="flex-1 text-center md:text-left space-y-6 reveal active transition-all duration-1000 transform translate-y-0 opacity-100">
+          <div className="flex-1 text-center md:text-left space-y-6 reveal">
             <div className="inline-block px-4 py-1.5 rounded-full bg-white text-lola-purple font-bold text-sm tracking-wide mb-2 animate-pulse">
               🐾 Seu pet em boas mãos
             </div>
